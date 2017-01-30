@@ -20,8 +20,10 @@ function animer() {
     effacerTout();
     enleverMorts();
     for(var i=0; i<fireworks.length; i++) {
-        fireworks[i].bouger();
-        fireworks[i].dessiner();
+		if(!fireworks[i].isDead()) {
+    		fireworks[i].bouger();
+     		fireworks[i].dessiner();
+		}
     }
     for(var i=0; i<particules.length; i++) {
         particules[i].bouger();
@@ -36,7 +38,6 @@ function enleverMorts() {
 
 function enleverFireworks() {
     if(fireworks.length > 0 && fireworks[0].isDead()) {
-        fireworks[0].exploser();
         fireworks.shift();
         genererFirework();
         enleverFireworks();
